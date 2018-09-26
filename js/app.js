@@ -1,53 +1,66 @@
-//Funciones de teclas
+//Objeto Calculadora
+//Seleccion de teclas
 var teclas = document.getElementsByClassName('tecla');
 for(i = 0; i < teclas.length; i++){
-//Ingreso de numeros
   teclas[i].addEventListener('click', function(){
+      var display = document.getElementById('display').innerHTML;
       var tecla = this.id;
       switch(tecla){
+            //Borra la pantalla y la deja en 0
         case 'on':
           document.getElementById('display').innerHTML=0
           break;
+            //Validar y borrar el 0 inicial
+        function qcero(num){
+          if (display==0) {
+              document.getElementById('display').innerHTML=num
+            }
+          else {
+              document.getElementById("display").innerHTML+=num
+            }};
+            //Ingreso de numeros
         case '1':
-          document.getElementById('display').innerHTML+=1
+          qcero(1);
           break;
         case '2':
-          document.getElementById('display').innerHTML+=2
+          qcero(2);
             break;
         case '3':
-          document.getElementById('display').innerHTML+=3
+          qcero(3);
             break;
         case '4':
-          document.getElementById('display').innerHTML+=4
+          qcero(4);
             break;
         case '5':
-          document.getElementById('display').innerHTML+=5
+          qcero(5);
             break;
         case '6':
-          document.getElementById('display').innerHTML+=6
+          qcero(6);
             break;
         case '7':
-          document.getElementById('display').innerHTML+=7
+          qcero(7);
             break;
         case '8':
-          document.getElementById('display').innerHTML+=8
+          qcero(8);
             break;
         case '9':
-          document.getElementById('display').innerHTML+=9
+          qcero(9);
             break;
         case '0':
-            function cero(){
-              var display = document.getElementById('display').innerHTML;
-              if (display==0) {
-                document.getElementById('display').innerHTML="0"
-              }
-              else {
-                document.getElementById("display").innerHTML+=0;
-              }}
-              cero();
+          qcero(0);
             break;
         case 'punto':
-          document.getElementById('display').innerHTML+='.'
+          function punto(){
+            if (display.indexOf(".") == -1) {
+                document.getElementById('display').innerHTML+= ".";
+              }}
+              punto();
+            break;
+        case 'sign':
+          function signo(){
+            document.getElementById("display").innerHTML*= -1;
+              }
+              signo();
             break;
       }
     });
