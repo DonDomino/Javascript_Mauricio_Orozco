@@ -10,6 +10,7 @@ for(i = 0; i < teclas.length; i++){
         case 'on':
           document.getElementById('display').innerHTML=0
           break;
+//Funciones
 //Valida 8 caracteres en display y no repeticion del 0 inicial
 					function validar(num){
 						if (display.length < 8) {
@@ -19,10 +20,12 @@ for(i = 0; i < teclas.length; i++){
 						else {
 								document.getElementById("display").innerHTML+=num
 							}}};
+//Coloca el punto y valida no repetirlo
 					function punto(){
             if (display.indexOf(".") == -1) {
                 document.getElementById('display').innerHTML+= ".";
               }};
+//Coloca el negativo
 					function signo(){
 						document.getElementById("display").innerHTML*= -1;
 							}
