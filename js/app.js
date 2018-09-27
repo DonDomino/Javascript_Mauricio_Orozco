@@ -1,126 +1,79 @@
-<<<<<<< HEAD
-//Objeto Calculadora
-var calc = {
-	display: document.getElementById("display").innerHTML,
-=======
 //Funciones de teclas
 var teclas = document.getElementsByClassName('tecla');
 for(i = 0; i < teclas.length; i++){
 //Ingreso de numeros
   teclas[i].addEventListener('click', function(){
+			var display = document.getElementById('display').innerHTML;
       var tecla = this.id;
       switch(tecla){
+//Reinicia el display a 0
         case 'on':
           document.getElementById('display').innerHTML=0
           break;
+//Valida 8 caracteres en display y no repeticion del 0 inicial
+					function validar(num){
+						if (display.length < 8) {
+							if (display==0) {
+								document.getElementById('display').innerHTML=num
+								}
+						else {
+								document.getElementById("display").innerHTML+=num
+							}}};
+					function punto(){
+            if (display.indexOf(".") == -1) {
+                document.getElementById('display').innerHTML+= ".";
+              }};
+					function signo(){
+						document.getElementById("display").innerHTML*= -1;
+							}
         case '1':
-          document.getElementById('display').innerHTML+=1
+				validar(1);
           break;
         case '2':
-          document.getElementById('display').innerHTML+=2
+				validar(2);
             break;
         case '3':
-          document.getElementById('display').innerHTML+=3
+				validar(3);
             break;
         case '4':
-          document.getElementById('display').innerHTML+=4
+				validar(4);
             break;
         case '5':
-          document.getElementById('display').innerHTML+=5
+				validar(5);
             break;
         case '6':
-          document.getElementById('display').innerHTML+=6
+				validar(6);
             break;
         case '7':
-          document.getElementById('display').innerHTML+=7
+				validar(7);
             break;
         case '8':
-          document.getElementById('display').innerHTML+=8
+				validar(8);
             break;
         case '9':
-          document.getElementById('display').innerHTML+=9
+				validar(9);
             break;
         case '0':
-            function cero(){
-              var display = document.getElementById('display').innerHTML;
-              if (display==0) {
-                document.getElementById('display').innerHTML="0"
-              }
-              else {
-                document.getElementById("display").innerHTML+=0;
-              }}
-              cero();
+				validar(0);
             break;
         case 'punto':
-          document.getElementById('display').innerHTML+='.'
+				punto();
             break;
+				case 'sign':
+				signo()
+						break;
       }
     });
->>>>>>> parent of 4e172dc... validaciones
 
+//Operaciones
 
-	init: (function(){
-		this.animacion();
-		this.teclado();
-	}),
 //Animacion de teclas
-  animacion: function(){
-    var teclas = document.getElementsByClassName('tecla');
-      for(i = 0; i < teclas.length; i++){
-        teclas[i].addEventListener('mousedown', function(){
-          this.style.padding = '2px';
-          });
-        teclas[i].addEventListener('mouseup', function(){
-          this.style.padding = '0px';
-          });
-  }},
-//Asignacion de teclas
-  teclado: function(){
-  	document.getElementById("0").addEventListener("click", function() {calc.numeros("0");});
-  	document.getElementById("1").addEventListener("click", function() {calc.numeros("1");});
-  	document.getElementById("2").addEventListener("click", function() {calc.numeros("2");});
-  	document.getElementById("3").addEventListener("click", function() {calc.numeros("3");});
-  	document.getElementById("4").addEventListener("click", function() {calc.numeros("4");});
-  	document.getElementById("5").addEventListener("click", function() {calc.numeros("5");});
-  	document.getElementById("6").addEventListener("click", function() {calc.numeros("6");});
-  	document.getElementById("7").addEventListener("click", function() {calc.numeros("7");});
-  	document.getElementById("8").addEventListener("click", function() {calc.numeros("8");});
-  	document.getElementById("9").addEventListener("click", function() {calc.numeros("9");});
-  	document.getElementById("on").addEventListener("click", function() {calc.on();});
-  	document.getElementById("sign").addEventListener("click", function() {calc.signo();});
-  	document.getElementById("punto").addEventListener("click", function() {calc.punto();});
-  	document.getElementById("igual").addEventListener("click", function() {calc.igual();});
-  	document.getElementById("dividido").addEventListener("click", function() {calc.operaciones("/");});
-  	document.getElementById("por").addEventListener("click", function() {calc.operaciones("*");});
-  	document.getElementById("menos").addEventListener("click", function() {calc.operaciones("-");});
-  	document.getElementById("mas").addEventListener("click", function() {calc.operaciones("+");});
-  },
-//Funciones de las teclas
-	numeros: function(num){
-    if (this.display.length<8) {
-      if (this.display==0) {
-          document.getElementById('display').innerHTML=num
-        }
-      else {
-          document.getElementById("display").innerHTML+=num
-        }}
-	},
-  on: function(){
-    document.getElementById('display').innerHTML=0;
-  },
-  signo: function(){
-    document.getElementById('display').innerHTML*=-1;
-  },
-  punto: function(){
+  teclas[i].addEventListener('mousedown', function(){
+    this.style.padding = '2px';
+  });
 
-  },
-  igual: function(){
+  teclas[i].addEventListener('mouseup', function(){
+    this.style.padding = '0px';
+  });
 
-  },
-  operaciones: function(){
-
-  },
-
-//Fin de Calculadora
-};
-calc.init();
+}
